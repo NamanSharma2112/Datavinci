@@ -36,7 +36,6 @@ export const offer = {
 };
 
 export const hero = {
-  badge: "New: Grippi inside Claude & ChatGPT",
   titleA: "Your entire marketing performance.",
   titleB: "Before your first meeting.",
   subtitle:

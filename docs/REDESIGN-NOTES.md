@@ -15,7 +15,7 @@ The current page is about 16,900px tall. Comparable YC-backed analytics and grow
 The current page says "Free Forever", "30 days free" and "Starts at $15/month" in different places, and repeats "Get Started. It's FREE!" with "No credit card" under it about eight times. The redesign uses one call to action, *Start free for 30 days*, with the same three reassurances under it.
 
 **3. The product is the hero.**
-The first screen is now an interactive dashboard with a Brands / Agencies toggle. Numbers count up, the revenue chart draws in and can be hovered, and an AI insight writes itself. A visitor sees what Grippi does before reading a line of copy.
+The first screen is a working dashboard, not a picture of one. A side rail switches between three live pages: **Overview**, **Channels** and **Alerts**. Today / Week / Month re-rolls every metric with slot-machine digits. Each platform can be toggled off in the revenue chart, and hovering a bar shows its breakdown. The AI insight writes itself and can be applied or undone. Alerts can be resolved and fold away. A visitor understands Grippi before reading a line of copy.
 
 **4. "The real number" gets its own moment.**
 Blended ROAS is Grippi's sharpest idea. It's now an animated explainer: Meta claims 6.8× and Google claims 5.4×, a total of 12.2×, but you actually made 4.7×. The 7.5× gap is shown as "counted twice".
@@ -23,10 +23,13 @@ Blended ROAS is Grippi's sharpest idea. It's now an animated explainer: Meta cla
 **5. "Ask Grippi" is interactive.**
 The five questions from the current page are clickable. Each one shows Grippi thinking, then streams its answer, with the Claude / ChatGPT (MCP) angle alongside.
 
-**6. Agencies get a working Masterview.**
+**6. A bento where every tile is alive.**
+The forecast tile has a day slider: drag it and the projection and totals update. The Slack / WhatsApp / email feed posts new messages on its own. The anomaly tile shows a client's ROAS falling through a threshold until the alert fires, and you can pause the campaign. Client report slides sit in a 3D stack you can click or fling.
+
+**7. Agencies get a working Masterview.**
 A sortable, filterable client table with Healthy / Review / Attention statuses, in a dark band that marks the switch from brands to agencies.
 
-**7. Calmer visual system.**
+**8. Calmer visual system.**
 Grippi's own violet and near-black, with Figtree and Inter, used with restraint. The pastel section panels, gradient text and clouds of feature tags are gone. Colour now only marks data (each ad platform) and the one primary action. Full light and dark modes are kept.
 
 ## Bugs found on the live site
@@ -50,8 +53,10 @@ These all look like UTF-8 text being decoded as Windows-1252 somewhere in the bu
 ## How it's built
 
 - Next.js 16 (App Router, fully static), React 19, TypeScript, Tailwind CSS v4, Motion
-- Libraries.dev effects, used only where they mean something: Thinking orbs for AI loading states, and Border beam while "Ask Grippi" is working and on the Agency plan's button
-- Adapted from Aceternity UI: the infinite moving strip of platforms
+- [ObsidianUI](https://www.obsidianui.dev) (MIT): slot-machine number animation, segmented control and sparklines, adapted from its Analytics Dashboard; the hero dashboard follows its layout
+- [Libraries.dev](https://libraries.dev): Thinking orbs for AI loading states; Border beam while "Ask Grippi" is working and on the Agency plan's button
+- [Aceternity UI](https://ui.aceternity.com): Infinite Moving Cards, adapted for the platform strip
+- Card stack interaction inspired by Bencho's "Card swap"; original implementation
 - All copy in one file (`content/site.ts`), so marketing can edit without touching components
 - Accessible: semantic tables, labelled controls, keyboard support, `prefers-reduced-motion` respected, light and dark themes
 

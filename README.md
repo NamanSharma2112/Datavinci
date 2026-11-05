@@ -23,7 +23,9 @@ To deploy, import the repo on Vercel. No configuration is needed.
 
 - **Next.js 16** (App Router, static) · **React 19** · **TypeScript** · **Tailwind CSS v4** · **Motion**
 - Fonts: Figtree + Inter (Grippi's own), self-hosted via Fontsource
+- [ObsidianUI](https://www.obsidianui.dev) (MIT): number animation, segmented control and sparkline, adapted from its Analytics Dashboard
 - [Libraries.dev](https://libraries.dev): `thinking-orbs` (AI loading states) and `border-beam` (Ask Grippi composer while answering; the Agency plan button)
+- Card stack: interaction inspired by Bencho's "Card swap", original implementation (`components/ui/card-swap.tsx`)
 - [Aceternity UI](https://ui.aceternity.com): Infinite Moving Cards, adapted for the platform strip
 - Platform marks: [simple-icons](https://simpleicons.org) (CC0)
 
@@ -31,7 +33,7 @@ To deploy, import the repo on Vercel. No configuration is needed.
 
 ```
 app/                 layout, page, tokens (light + dark) in globals.css
-components/sections  nav, hero, dashboard-preview, platforms, real-number, ask,
+components/sections  nav, hero, dashboard/ (interactive app), platforms, real-number, ask,
                      features, agencies, proof, pricing, faq, final-cta, footer
 components/ui        button, reveal, count-up, theme, logo, icons, marquee, beam CTA
 content/site.ts      every word on the page
