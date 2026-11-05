@@ -18,8 +18,8 @@ export const viewport: Viewport = {
   ],
 };
 
-// Applies the saved theme before first paint so there is no flash.
-const themeScript = `try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.dataset.theme=t}}catch(e){}`;
+// Applies the saved theme (or the OS setting) before first paint so there is no flash.
+const themeScript = `(function(){var t='system';try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light'||s==='system')t=s}catch(e){}var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);var e=document.documentElement;e.dataset.theme=d?'dark':'light';e.dataset.themePref=t})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -283,9 +283,12 @@ export const finalCta = {
 
 export const footer = {
   tagline: "Every platform. One honest number.",
+  blurb: "Blended ROAS, month-end forecasts and plain-language insights for eCommerce brands and the agencies that run them.",
+  worksWith: ["Shopify", "Meta", "Google Ads", "Google Analytics", "TikTok", "Klaviyo"],
   columns: [
     { title: "Product", links: [["Dashboard", "#product"], ["Real ROAS", "#roas"], ["Ask Grippi", "#ask"], ["Pricing", "#pricing"]] },
-    { title: "Solutions", links: [["Agencies", "#agencies"], ["Brands", "#product"], ["Live demo", "https://grippi.io"]] },
+    { title: "Platforms", links: [["Shopify", "#product"], ["Meta Ads", "#product"], ["Google Ads", "#product"], ["Amazon", "#product"], ["TikTok Ads", "#product"]] },
+    { title: "Solutions", links: [["Brands", "#product"], ["Agencies", "#agencies"], ["Live demo", "https://grippi.io"]] },
     { title: "Company", links: [["Sign in", "https://app.grippi.io"], ["Privacy", "https://grippi.io"], ["Terms", "https://grippi.io"]] },
   ] as { title: string; links: [string, string][] }[],
 };
