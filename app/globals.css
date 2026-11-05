@@ -1,118 +1,158 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* ------------------------------------------------------------------
-   Design tokens
-   One warm neutral ramp, one accent, used sparingly.
+   Tokens. Grippi's own brand (violet + near-black, Figtree / Inter),
+   used with restraint: one accent, neutral surfaces, colour only
+   where it carries data (platform series in charts).
    ------------------------------------------------------------------ */
-@theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-geist-serif), ui-serif, Georgia, serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
-
-  --color-paper: #f6f5f1;
-  --color-surface: #ffffff;
-  --color-ink: #121211;
-  --color-ink-2: #3a3936;
-  --color-muted: #6e6c66;
-  --color-faint: #a3a19a;
-  --color-line: #e4e2dc;
-  --color-line-2: #d6d3cb;
-  --color-night: #0f0f0e;
-  --color-night-2: #1a1a18;
-  --color-night-line: #2a2a27;
-  --color-accent: #ff5a1f;
-  --color-accent-ink: #c2410c;
-  --color-ok: #15803d;
-
-  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
-
-  --shadow-card: 0 1px 0 rgb(18 18 17 / 0.04), 0 1px 2px rgb(18 18 17 / 0.06),
-    0 8px 24px -12px rgb(18 18 17 / 0.12);
-  --shadow-float: 0 1px 0 rgb(18 18 17 / 0.04), 0 2px 4px rgb(18 18 17 / 0.04),
-    0 24px 48px -24px rgb(18 18 17 / 0.22);
-}
-
 :root {
+  --bg: #ffffff;
+  --bg-2: #f7f7f8;
+  --surface: #ffffff;
+  --surface-2: #fafafa;
+  --ink: #0e0e10;
+  --ink-2: #3f3f46;
+  --muted: #6b7280;
+  --faint: #a1a1aa;
+  --line: #ececee;
+  --line-2: #dedee2;
+  --accent: #7c3aed;
+  --accent-2: #6d28d9;
+  --accent-soft: #f3eefe;
+  --accent-ink: #5b21b6;
+  --good: #059669;
+  --good-soft: #e7f6f0;
+  --warn: #b45309;
+  --warn-soft: #fdf3e3;
+  --bad: #dc2626;
+  --bad-soft: #fdecec;
+  --shadow-card: 0 1px 0 rgb(14 14 16 / 0.03), 0 1px 3px rgb(14 14 16 / 0.06), 0 12px 32px -16px rgb(14 14 16 / 0.12);
+  --shadow-float: 0 1px 0 rgb(14 14 16 / 0.04), 0 2px 6px rgb(14 14 16 / 0.04), 0 32px 64px -32px rgb(14 14 16 / 0.28);
+
+  /* Platform series — muted versions of each brand colour. */
+  --p-meta: #3b6ff5;
+  --p-google: #f2a20c;
+  --p-shopify: #5aa34a;
+  --p-amazon: #ef7d22;
+  --p-tiktok: #e5375e;
   color-scheme: light;
 }
 
+[data-theme="dark"] {
+  --bg: #0b0b0d;
+  --bg-2: #111114;
+  --surface: #141417;
+  --surface-2: #18181c;
+  --ink: #f4f4f5;
+  --ink-2: #d4d4d8;
+  --muted: #9ca3af;
+  --faint: #6b6b74;
+  --line: #232328;
+  --line-2: #2e2e34;
+  --accent: #8b5cf6;
+  --accent-2: #a78bfa;
+  --accent-soft: #1f1730;
+  --accent-ink: #c4b5fd;
+  --good: #34d399;
+  --good-soft: #0f2a21;
+  --warn: #fbbf24;
+  --warn-soft: #2b2110;
+  --bad: #f87171;
+  --bad-soft: #2d1414;
+  --shadow-card: 0 0 0 1px rgb(255 255 255 / 0.03), 0 12px 32px -16px rgb(0 0 0 / 0.6);
+  --shadow-float: 0 0 0 1px rgb(255 255 255 / 0.04), 0 32px 64px -32px rgb(0 0 0 / 0.8);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Figtree Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-p-meta: var(--p-meta);
+  --color-p-google: var(--p-google);
+  --color-p-shopify: var(--p-shopify);
+  --color-p-amazon: var(--p-amazon);
+  --color-p-tiktok: var(--p-tiktok);
+  --shadow-card: var(--shadow-card);
+  --shadow-float: var(--shadow-float);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 html {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--bg);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
 }
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 }
 
 body {
   font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
-  background: var(--color-paper);
+  font-feature-settings: "cv11", "ss01", "ss03";
+  background: var(--bg);
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
-::selection {
-  background: rgb(255 90 31 / 0.18);
-  color: var(--color-ink);
+.font-display {
+  font-feature-settings: normal;
 }
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+::selection { background: color-mix(in srgb, var(--accent) 22%, transparent); }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-/* Hairline grid used behind the hero. Fades out toward the edges. */
-.grid-paper {
-  background-image: linear-gradient(to right, rgb(18 18 17 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(18 18 17 / 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
-}
-
-/* Subtle grain so large flat areas don't look plastic. */
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Press feedback for anything clickable. */
 .press {
-  transition: transform 160ms var(--ease-out-quint), background-color 160ms ease,
-    color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  transition: transform 160ms var(--ease-out-quint), background-color 160ms ease, color 160ms ease,
+    border-color 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
 }
-.press:active {
-  transform: scale(0.97);
+.press:active { transform: scale(0.97); }
+
+/* Dot grid used behind the hero product frame. */
+.dots {
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1px);
+  background-size: 18px 18px;
 }
 
-/* Blinking caret for the demo composer. */
-@keyframes caret {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-.caret {
-  animation: caret 1s steps(1) infinite;
-}
+@keyframes caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.caret { animation: caret 1s steps(1) infinite; }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { animation: marquee 40s linear infinite; }
+.marquee-wrap:hover .marquee { animation-play-state: paused; }
+
 @media (prefers-reduced-motion: reduce) {
-  .caret {
-    animation: none;
-  }
+  .caret, .marquee { animation: none; }
 }

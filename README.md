@@ -1,18 +1,8 @@
 # Grippi — landing page redesign concept
 
-An unofficial redesign concept for [grippi.io](https://grippi.io). Not affiliated with or endorsed by Grippi.
+A redesign concept for [grippi.io](https://grippi.io). Not the official site. See **[docs/REDESIGN-NOTES.md](docs/REDESIGN-NOTES.md)** for what changed and why, plus bugs found on the live site.
 
-![Hero](docs/preview-hero.png)
-
-## Stack
-
-- **Next.js 16** (App Router, fully static) + **React 19** + **TypeScript**
-- **Tailwind CSS v4**: design tokens live in `app/globals.css` under `@theme`
-- **Motion** for entrance, scroll-reveal, accordion and state transitions (respects `prefers-reduced-motion`)
-- **Geist** Sans / Serif / Mono, self-hosted via the `geist` package
-- [Libraries.dev](https://libraries.dev) effects, used only where they mean something:
-  - `border-beam`: runs around the hero composer **only while the agent demo is working**
-  - `thinking-orbs`: the live state of each agent step (planning → searching → solving → composing)
+![After](docs/after-hero.jpg)
 
 ## Run it
 
@@ -22,21 +12,28 @@ npm run dev     # http://localhost:3000
 npm run build   # static production build
 ```
 
-Deploy: import the repo on Vercel; no configuration needed.
+To deploy, import the repo on Vercel. No configuration is needed.
 
-## Before showing this to anyone
+## Before sharing
 
-This was built **without access to the live grippi.io site**, so the product copy is a draft.
+1. Put your name and LinkedIn in `concept.author` / `concept.authorUrl` in `content/site.ts` (shown in the footer).
+2. All copy, numbers, pricing and testimonials come from grippi.io (captured Nov 2026). Re-check pricing and stats if time has passed.
 
-1. Open `content/site.ts`. **All** copy lives there.
-2. Replace every line marked `TODO verify` with Grippi's real copy, links and integrations.
-3. Set your name and LinkedIn in `concept.author` / `concept.authorUrl` (shown in the footer).
-4. Don't add stats, customer logos or testimonials unless they come from Grippi.
+## Stack
+
+- **Next.js 16** (App Router, static) · **React 19** · **TypeScript** · **Tailwind CSS v4** · **Motion**
+- Fonts: Figtree + Inter (Grippi's own), self-hosted via Fontsource
+- [Libraries.dev](https://libraries.dev): `thinking-orbs` (AI loading states) and `border-beam` (Ask Grippi composer while answering; the Agency plan button)
+- [Aceternity UI](https://ui.aceternity.com): Infinite Moving Cards, adapted for the platform strip
+- Platform marks: [simple-icons](https://simpleicons.org) (CC0)
 
 ## Structure
 
 ```
-app/            layout, page, global styles + tokens
-components/     nav, hero, agent-demo, how-it-works, features, faq, cta, footer
-content/site.ts every word on the page
+app/                 layout, page, tokens (light + dark) in globals.css
+components/sections  nav, hero, dashboard-preview, platforms, real-number, ask,
+                     features, agencies, proof, pricing, faq, final-cta, footer
+components/ui        button, reveal, count-up, theme, logo, icons, marquee, beam CTA
+content/site.ts      every word on the page
+docs/                redesign notes and before/after screenshots
 ```
