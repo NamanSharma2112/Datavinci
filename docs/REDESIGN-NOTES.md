@@ -29,7 +29,10 @@ The forecast tile has a day slider: drag it and the projection and totals update
 **7. Agencies get a working Masterview.**
 A sortable, filterable client table with Healthy / Review / Attention statuses, in a dark band that marks the switch from brands to agencies.
 
-**8. Calmer visual system.**
+**8. A closing section that tells the story.**
+The last section shows one agency in New York connected to client stores on four continents. Each arc draws in and carries data back, and each store shows its blended ROAS and Healthy / Review / Attention status. It's the Masterview idea, told on a map.
+
+**9. Calmer visual system.**
 Grippi's own violet and near-black, with Figtree and Inter, used with restraint. The pastel section panels, gradient text and clouds of feature tags are gone. Colour now only marks data (each ad platform) and the one primary action. Full light and dark modes are kept.
 
 ## Bugs found on the live site
@@ -55,7 +58,7 @@ These all look like UTF-8 text being decoded as Windows-1252 somewhere in the bu
 - Next.js 16 (App Router, fully static), React 19, TypeScript, Tailwind CSS v4, Motion
 - [ObsidianUI](https://www.obsidianui.dev) (MIT): slot-machine number animation, segmented control and sparklines, adapted from its Analytics Dashboard; the hero dashboard follows its layout
 - [Libraries.dev](https://libraries.dev): Thinking orbs for AI loading states; Border beam while "Ask Grippi" is working and on the Agency plan's button
-- [Aceternity UI](https://ui.aceternity.com): Infinite Moving Cards, adapted for the platform strip
+- [Aceternity UI](https://ui.aceternity.com): Infinite Moving Cards (platform strip) and World Map (closing section). The map is adapted so its ~340 KB of country data is processed at build time instead of being sent to the browser.
 - Card stack interaction inspired by Bencho's "Card swap"; original implementation
 - All copy in one file (`content/site.ts`), so marketing can edit without touching components
 - Accessible: semantic tables, labelled controls, keyboard support, `prefers-reduced-motion` respected, light and dark themes

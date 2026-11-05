@@ -9,8 +9,8 @@
  */
 
 export const concept = {
-  author: "Your Name", // TODO: your name
-  authorUrl: "https://www.linkedin.com/in/your-handle", // TODO: your LinkedIn
+  author: "Naman Sharma",
+  authorUrl: "https://github.com/NamanSharma2112", // swap for your LinkedIn URL if you prefer
   note: "Redesign concept — not the official Grippi site.",
 };
 
@@ -277,8 +277,20 @@ export const faq = {
 };
 
 export const finalCta = {
-  title: "Once you've seen everything in one place, five tabs feels broken.",
-  body: "Connect your platforms in five minutes. Your first report arrives tomorrow morning.",
+  eyebrow: "Wherever you sell",
+  title: "Every store. Every market. One honest number.",
+  body: "Brands and agencies run accounts across countries, currencies and ad platforms. Grippi pulls them into one view. Connect in five minutes; your first report arrives tomorrow morning.",
+  origin: { label: "Your team · New York", lat: 40.71, lng: -74.0 },
+  // Same illustrative clients as the agency Masterview.
+  markets: [
+    { client: "NightShift Coffee", city: "Austin", lat: 30.27, lng: -97.74, side: "left" },
+    { client: "Northfield Apparel", city: "Vancouver", lat: 49.28, lng: -123.12, side: "right" },
+    { client: "Verdant Wellness", city: "São Paulo", lat: -23.55, lng: -46.63, side: "right" },
+    { client: "Bloom & Root", city: "London", lat: 51.5, lng: -0.13, side: "right" },
+    { client: "Dune & Co.", city: "Dubai", lat: 25.2, lng: 55.27, side: "right" },
+    { client: "Halo Active", city: "Singapore", lat: 1.35, lng: 103.82, side: "right" },
+    { client: "Crestline Sports", city: "Sydney", lat: -33.87, lng: 151.21, side: "left" },
+  ] as { client: string; city: string; lat: number; lng: number; side: "left" | "right" }[],
 };
 
 export const footer = {
