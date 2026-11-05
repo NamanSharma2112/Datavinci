@@ -37,16 +37,22 @@ Grippi's own violet and near-black, with Figtree and Inter, used with restraint.
 
 ## Bugs found on the live site
 
-These text-encoding glitches are in the current HTML (checked in the page source on 5 Nov 2026):
+Four text-encoding glitches are live on grippi.io (re-checked in the rendered page on 5 Nov 2026):
 
-| Where | Shows | Should be |
-|---|---|---|
-| Hero dashboard, ad spend card | `↓ ˆ’2% MoM` | `↓ −2% MoM` |
-| Hero dashboard greeting | `Good morning, Sarah` + a broken control character (`U+008F`) | `Good morning, Sarah 👋` |
-| Forecast section | `†` + a broken character before "Today (Day 15)" | `↓ Today (Day 15)` (or similar) |
-| Pricing, Agency plan | `Performance audit †’ Google Slides` | `Performance audit → Google Slides` |
+| Where | What shows | Should be | Screenshot |
+|---|---|---|---|
+| Hero dashboard, "Total ad spend" card | `↓ ˆ’2% MoM` | `↓ −2% MoM` | ![](bugs/1-ad-spend-minus.png) |
+| Hero dashboard greeting | `Good morning, Sarah` followed by a box (control character `U+008F`) | the intended emoji | ![](bugs/2-good-morning-sarah.png) |
+| Forecast card, under the pacing bar | `†` + a box before "Today (Day 15)" | `← Today (Day 15)` | ![](bugs/3-forecast-today-marker.png) |
+| Pricing, Agency plan | `Performance audit †’ Google Slides` | `Performance audit → Google Slides` | ![](bugs/4-pricing-arrow.png) |
 
-These all look like UTF-8 text being decoded as Windows-1252 somewhere in the build or CMS step. That is usually a one-line fix.
+**Cause:** UTF-8 text is being decoded as Windows-1252 somewhere in the build or content pipeline, and the first byte is then dropped. For example:
+
+- `−` is the UTF-8 bytes `E2 88 92`, which read as Windows-1252 give `âˆ’`; the page shows `ˆ’`.
+- `→` (`E2 86 92`) becomes `â†’`, shown as `†’`.
+- `←` (`E2 86 90`) becomes `†` plus an unprintable `0x90`.
+
+**Fix:** make sure the source files are saved and read as UTF-8, and that the page is served with `<meta charset="utf-8">` / `Content-Type: text/html; charset=utf-8`. Or use HTML entities (`&minus;`, `&rarr;`, `&larr;`) for these symbols.
 
 ## Also worth a look
 
